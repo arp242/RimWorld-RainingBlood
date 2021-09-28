@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<ThoughtDef>
+	<defName>BloodCovered</defName>
+	<durationDays>0.1</durationDays>
+	<stackLimit>1</stackLimit>
+	<stages>
+		<li>
+			<label>blood covered</label>
+			<description>I'm covered in blood; yuk!</description>
+			<baseMoodEffect>-30</baseMoodEffect>
+		</li>
+	</stages>
+</ThoughtDef>
+
+<ThoughtDef>
+	<defName>BloodCoveredCannibal</defName>
+	<durationDays>0.1</durationDays>
+	<stackLimit>1</stackLimit>
+	<stages>
+		<li>
+			<label>blood covered</label>
+			<description>Reigning in blood!</description>
+			<baseMoodEffect>10</baseMoodEffect>
+		</li>
+	</stages>
+</ThoughtDef>
+</Defs>
