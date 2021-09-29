@@ -1,23 +1,23 @@
 namespace RainingBlood {
 	public class WeatherDefExtension : Verse.DefModExtension {
 		public RimWorld.ThoughtDef exposedThoughtCannibal;
-    }
+	}
 
-    [Verse.StaticConstructorOnStartup]
-    public static class Patch {
+	[Verse.StaticConstructorOnStartup]
+	public static class Patch {
 		static Patch() {
 			// Get the method we want to patch.
 			var m = typeof(Verse.AI.Pawn_MindState).GetMethod("MindStateTick");
 
 			// Get the method we want to run after the original.
 			var post = typeof(RainingBlood.Patch).GetMethod("PostMindStateTick",
-				       System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.Public);
+				System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.Public);
 
 			// Patch stuff! The string passed to the Harmony constructor can be
 			// anything, and can be used to identify/remove patches if need be.
 			new HarmonyLib.Harmony("arp242.rainingblood").Patch(m,
 				postfix: new HarmonyLib.HarmonyMethod(post));
-        }
+		}
 
 		// The special __instance parameter has the original class instance
 		// we're extending. This is based on the argument name.
@@ -37,7 +37,7 @@ namespace RainingBlood {
 
 			// Let's see if the current weather has our new exposedThoughtCannibal.
 			var w = pawn.Map.weatherManager.CurWeatherLerped;
-            if (!w.HasModExtension<WeatherDefExtension>())
+			if (!w.HasModExtension<WeatherDefExtension>())
 				return;
 			var t = w.GetModExtension<WeatherDefExtension>().exposedThoughtCannibal;
 			if (t == null)
